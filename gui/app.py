@@ -1,7 +1,7 @@
 import customtkinter
 
 from utils import FontParams
-from widget_utils import DataTableWidget, DataEntryWidget, DeleteWidget#, UpdateWidget, DeleteWidget
+from widget_utils import DataTableWidget, DataEntryWidget, UpdateWidget, DeleteWidget
 from database.database import Database
 
 
@@ -79,7 +79,7 @@ class DataBaseGui:
 
         self.init_data_table()
         self.init_data_entry()
-        # self.init_data_update()
+        self.init_data_update()
         self.init_data_delete()
 
     # ---------------- DataTableWidget FUNCTIONS --------------------
@@ -102,16 +102,16 @@ class DataBaseGui:
         """Destroy the data entry widget"""
         self.data_entry.destroy_entry_widget()
 
-    # # ---------------- UpdateWidget FUNCTIONS --------------------
-    # def init_data_update(self):
-    #     """Initialize the data update widget. This procedure allows
-    #     to destroy and relaunch this widget from outside this class"""
-    #     self.data_update = UpdateWidget(self)
-    #
-    # def destroy_data_update(self):
-    #     """Destroy the update-widget"""
-    #     self.data_update.destroy()
-    #
+    # ---------------- UpdateWidget FUNCTIONS --------------------
+    def init_data_update(self):
+        """Initialize the data update widget. This procedure allows
+        to destroy and relaunch this widget from outside this class"""
+        self.data_update = UpdateWidget(self)
+
+    def destroy_data_update(self):
+        """Destroy the update-widget"""
+        self.data_update.destroy()
+
     # ---------------- DeleteWidget FUNCTIONS --------------------
     def init_data_delete(self):
         """Initialize the data delete widget. This procedure allows

@@ -243,4 +243,54 @@ class DeleteWidget:
             self.database_obj.init_data_table()
 
 
+class UpdateWidget:
+    """
+    Update an entry of the database.
+    :param database_obj: It contains the parameters: username, container,
+    client_database and every widget place in the database-gui
+    """
+    def __init__(self, database_obj):
+        self.database_obj = database_obj
+        # Frame creation and positioning
+        frame = customtkinter.CTkFrame(master=database_obj.container)
+        # Place the widget frame in the container
+        frame.grid(row=2, column=2, padx=5, pady=5, ipady=10, sticky="sew")
+        # Grid config (1, 4) -> rows, cols
+        frame.columnconfigure((0, 1, 2, 3), weight=1)
+        frame.rowconfigure(0, weight=1)
+
+        # Connect to the client database
+        self.client_database = database_obj.client_database
+
+        font_params = FontParams()
+        # Update label ------------------
+        update_label = customtkinter.CTkLabel(frame, text="Update ID: ", font=font_params.header_font)
+        update_label.grid(row=0, column=0, ipadx=5)
+        # Delete entry ------------------
+        expense_id = customtkinter.IntVar()
+        self.update_entry = customtkinter.CTkEntry(frame, font=font_params.text_font,
+                                                   width=50, textvariable=expense_id)
+        self.update_entry.grid(row=0, column=1, columnspan=2, ipadx=60)
+        # Ok button    ------------------
+        update_ok_btn = customtkinter.CTkButton(frame, text="Ok", font=font_params.text_font,
+                                                width=10, command=self.del_entry_func)
+        update_ok_btn.grid(row=0, column=3)
+
+    def update_entry_func(self):
+        """Update the id-entry from the client database."""
+        expense_id = self.update_entry.get()
+        answer = messagebox.askquestion(title="Update Entry",
+                                        message=f"Do you want to update expense Id={expense_id} ?")
+        if answer == "yes":
+            """
+            TODO: Launch data entry frame so the old entry values can be deleted and rewritten 
+            retrieve those values and use update_expense from database.database to set the new
+            values. Finally reload the frame to display the updated version.  
+            """
+            self.client_database.delete_expense(expense_id)
+            # reload database and data entry frame
+            self.database_obj.destroy_data_table()
+            self.database_obj.init_data_table()
+
+
 
