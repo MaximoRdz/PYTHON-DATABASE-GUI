@@ -130,6 +130,7 @@ class App(customtkinter.CTk):
         customtkinter.set_appearance_mode("light")
         self.title("Expenses Data Base")
         self.geometry("300x220")
+        self.resizable("False", "False")
         # Initialize the user entry interface
         user = UsernameGui(self)
 

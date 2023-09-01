@@ -126,11 +126,3 @@ class Database:
         gui_info = cursor.fetchall()
         conn.close()
         return gui_info
-
-
-# if __name__ == "__main__":
-#     db = Database("maximo")
-#     db.create_database()
-#     db.add_expense(10, "max", "p", "a", "a")
-#     db.update_expense((2, 0, 0, 0, 20, "mercadona", "cash", "periodic", "hola"))
-

@@ -87,9 +87,6 @@ class DataEntryWidget:
     client_database and every widget place in the database-gui
     """
     def __init__(self, database_obj):
-        """self.root = root
-        self.client_db = client_db
-        self.database_frame = root.db_frame # frame de la tabla"""
         self.database_obj = database_obj
         # Frame creation and positioning.
         self.frame = customtkinter.CTkFrame(master=database_obj.container)
@@ -155,10 +152,10 @@ class DataEntryWidget:
         self.description_entry.grid(row=5, column=0, columnspan=2,
                                     padx=5, pady=5, sticky="wen")
         # Add button --------------
-        add_btn = customtkinter.CTkButton(master=self.frame,
-                                          text="Add", font=font_params.text_font, width=10,
-                                          command=self.add_entry)
-        add_btn.grid(row=6, column=1, pady=5, padx=5, sticky="e")
+        self.add_btn = customtkinter.CTkButton(master=self.frame,
+                                               text="Add", font=font_params.text_font, width=10,
+                                               command=self.add_entry)
+        self.add_btn.grid(row=6, column=1, pady=5, padx=5, sticky="e")
 
     def add_entry(self):
         """Collect the entry values and add them to the DB."""
@@ -185,6 +182,31 @@ class DataEntryWidget:
             self.database_obj.init_data_table()
             self.database_obj.destroy_data_entry()
             self.database_obj.init_data_entry()
+
+        except ValueError:
+            messagebox.showerror(title="Error", message="Check the values")
+
+    def update_entry(self, update_object, expense_id, year, month, day):
+        """Collect the entry values and add them to the DB."""
+        try:
+            # Get the amount
+            amount = round(float(self.amount_entry.get()), 2)
+            # Get the collector
+            collector = self.collector_entry.get().capitalize()
+            save_new_collector(collector)
+            # Get the payment method
+            payment_method = payment_to_str(self.pm_radio_btns.radio_var.get())
+            expense_type = periodic_to_str(self.periodic_radio_btns.radio_var.get())
+            # Get the expense description
+            description = self.description_entry.get("1.0", "end-1c")
+            description = check_description_len(description)
+
+            # Add new entry to the DB. --------------------------------
+            self.client_database.update_expense((expense_id, year, month, day,
+                                                amount, collector, payment_method, expense_type, description))
+            messagebox.showinfo(title="Expense Update", message="Expense updated successfully")
+            update_object.reload_app()
+
 
         except ValueError:
             messagebox.showerror(title="Error", message="Check the values")
@@ -251,10 +273,11 @@ class UpdateWidget:
     """
     def __init__(self, database_obj):
         self.database_obj = database_obj
+        self.update_window = None
         # Frame creation and positioning
         frame = customtkinter.CTkFrame(master=database_obj.container)
         # Place the widget frame in the container
-        frame.grid(row=2, column=2, padx=5, pady=5, ipady=10, sticky="sew")
+        frame.grid(row=2, column=2, padx=5, pady=5, ipady=10, sticky="new")
         # Grid config (1, 4) -> rows, cols
         frame.columnconfigure((0, 1, 2, 3), weight=1)
         frame.rowconfigure(0, weight=1)
@@ -273,7 +296,7 @@ class UpdateWidget:
         self.update_entry.grid(row=0, column=1, columnspan=2, ipadx=60)
         # Ok button    ------------------
         update_ok_btn = customtkinter.CTkButton(frame, text="Ok", font=font_params.text_font,
-                                                width=10, command=self.del_entry_func)
+                                                width=10, command=self.update_entry_func)
         update_ok_btn.grid(row=0, column=3)
 
     def update_entry_func(self):
@@ -281,16 +304,41 @@ class UpdateWidget:
         expense_id = self.update_entry.get()
         answer = messagebox.askquestion(title="Update Entry",
                                         message=f"Do you want to update expense Id={expense_id} ?")
+        _, year, month, day, *_ = self.client_database.get_expense_info(expense_id)
         if answer == "yes":
-            """
-            TODO: Launch data entry frame so the old entry values can be deleted and rewritten 
-            retrieve those values and use update_expense from database.database to set the new
-            values. Finally reload the frame to display the updated version.  
-            """
-            self.client_database.delete_expense(expense_id)
-            # reload database and data entry frame
-            self.database_obj.destroy_data_table()
-            self.database_obj.init_data_table()
+            self.update_window = customtkinter.CTkToplevel()
+            self.update_window.resizable("False", "False")
+            pop_window = PopWindow(self.update_window, self.database_obj.username, self.database_obj.client_database)
+            data_entry = DataEntryWidget(pop_window)
+            data_entry.add_btn.configure(text="Update", command=lambda: data_entry.update_entry(self, expense_id,
+                                                                                                year, month, day))
+
+        #     """
+        #     TODO: Launch data entry frame so the old entry values can be deleted and rewritten
+        #     retrieve those values and use update_expense from database.database to set the new
+        #     values. Finally reload the frame to display the updated version.
+        #     """
+        #     self.client_database.delete_expense(expense_id)
+        #     # reload database and data entry frame
+        #     self.database_obj.destroy_data_table()
+        #     self.database_obj.init_data_table()
+
+    def reload_app(self):
+        self.update_window.destroy()
+        time.sleep(0.5)
+        self.database_obj.destroy_data_table()
+        self.database_obj.init_data_table()
+
+
+
+class PopWindow:
+    def __init__(self, container, username, database):
+        self.container = container
+        self.username = username
+        self.client_database = database
+
+
+
 
 
 
