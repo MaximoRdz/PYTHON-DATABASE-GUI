@@ -213,7 +213,7 @@ class DataEntryWidget:
 
     def reset_entry_values(self):
         self.amount_entry.delete(0, customtkinter.END)
-        self.amount_entry.delete(0, customtkinter.END)
+        # self.amount_entry.delete(0, customtkinter.END)
         self.description_entry.delete("1.0", customtkinter.END)
 
     def destroy_entry_widget(self):
@@ -261,6 +261,7 @@ class DeleteWidget:
         if answer == "yes":
             self.client_database.delete_expense(expense_id)
             # reload database and data entry frame
+            self.del_entry.delete(0, customtkinter.END)
             self.database_obj.destroy_data_table()
             self.database_obj.init_data_table()
 
@@ -315,22 +316,12 @@ class UpdateWidget:
             data_entry.add_btn.configure(text="Update", command=lambda: data_entry.update_entry(self, expense_id,
                                                                                                 year, month, day))
 
-        #     """
-        #     TODO: Launch data entry frame so the old entry values can be deleted and rewritten
-        #     retrieve those values and use update_expense from database.database to set the new
-        #     values. Finally reload the frame to display the updated version.
-        #     """
-        #     self.client_database.delete_expense(expense_id)
-        #     # reload database and data entry frame
-        #     self.database_obj.destroy_data_table()
-        #     self.database_obj.init_data_table()
-
     def reload_app(self):
         self.update_window.destroy()
         time.sleep(0.5)
+        self.update_entry.delete(0, customtkinter.END)
         self.database_obj.destroy_data_table()
         self.database_obj.init_data_table()
-
 
 
 class PopWindow:
