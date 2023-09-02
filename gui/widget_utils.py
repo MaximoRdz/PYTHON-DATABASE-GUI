@@ -308,6 +308,8 @@ class UpdateWidget:
         if answer == "yes":
             self.update_window = customtkinter.CTkToplevel()
             self.update_window.resizable("False", "False")
+            self.update_window.title(f"Update Id {expense_id}")
+            self.update_window.attributes('-topmost', 'true')
             pop_window = PopWindow(self.update_window, self.database_obj.username, self.database_obj.client_database)
             data_entry = DataEntryWidget(pop_window)
             data_entry.add_btn.configure(text="Update", command=lambda: data_entry.update_entry(self, expense_id,
