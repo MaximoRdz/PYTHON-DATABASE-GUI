@@ -16,5 +16,5 @@ features so entries can be easily modify.
 ![SQLite3](https://img.shields.io/badge/SQLite3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
 #### TODO
-- [] Automatically fill the old expense info when updating it (PopWindow).
-
+- :white_check_mark Automatically fill the old expense info when updating it (PopWindow).
+- :white_large_square
