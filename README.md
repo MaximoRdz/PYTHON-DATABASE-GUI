@@ -16,5 +16,11 @@ features so entries can be easily modify.
 ![SQLite3](https://img.shields.io/badge/SQLite3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
 #### TODO
-- ⬜ Automatically fill the old expense info when updating it (PopWindow).
-- ✅
+- ✅ Create database for new clients if username is not register.
+- ✅ Compartmentalize everything in classes to allow cross functionality among frames.
+- ✅ Self executing file for windows.
+- ✅ Automatically fill the old expense info when updating it (PopWindow).
+- ✅ README app instructions.
+- ⬜ Pretiffy text entries.
+- ⬜ Check if the selected expense index is real. If not raise error window.
+- ⬜ Previous and Next buttons bellow the expenses' display table.
