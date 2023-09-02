@@ -207,7 +207,6 @@ class DataEntryWidget:
             messagebox.showinfo(title="Expense Update", message="Expense updated successfully")
             update_object.reload_app()
 
-
         except ValueError:
             messagebox.showerror(title="Error", message="Check the values")
 
