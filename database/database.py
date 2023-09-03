@@ -5,9 +5,10 @@ from database.utils import get_date
 
 
 class Database:
+    """Create or init the user expenses database. This class provides all the
+    necessary methods to automate the control of the database through the gui."""
     def __init__(self, username):
-        """Init the user expenses database."""
-        self.user_db = username+".db"
+        self.user_db = os.path.join("..", username+".db")    # .. : save on this folder parent
 
     def create_database(self):
         """Create the relational database to save the expenses."""
