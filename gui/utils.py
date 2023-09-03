@@ -27,23 +27,31 @@ def payment_to_str(payment_num):
 
 
 def get_collector_values():
-    """Get the collector saved values from a txt file."""
+    """
+    Get the collector saved values from a txt file.
+    :return collector_values: List of strings values.
+    If the collector file is not found then
+    :return List with one element -> empty string
+    """
+    file_path = os.path.join("..", "collector.txt")
     try:
         collector_values = list()
-        with open("collector.txt", "r") as file:
+        with open(file_path, "r") as file:
             for line in file:
                 collector_values.append(line)
         return collector_values
     except FileNotFoundError:
-        with open("collector.txt", "w") as file:
+        with open(file_path, "w") as file:
             file.write("")
         return [""]
 
 
 def save_new_collector(new_collector):
     """If the new collector is not in the saved list add it"""
-    if new_collector not in get_collector_values():
-        with open("collector.txt", "a") as file:
+    file_path = os.path.join("..", "collector.txt")
+    collector_list = get_collector_values()
+    if len(collector_list) <= ct.MAXIMUM_COLLECTOR_VALUES and new_collector not in collector_list:
+        with open(file_path, "a") as file:
             file.write("\n" + new_collector)
 
 

@@ -2,10 +2,10 @@ import time
 import customtkinter
 from tkinter import ttk, messagebox
 
-import constants as ct
-from utils import FontParams, RadioButton
-from utils import periodic_to_str, payment_to_str
-from utils import get_collector_values, save_new_collector, check_description_len
+import gui.constants as ct
+from gui.utils import FontParams, RadioButton
+from gui.utils import periodic_to_str, payment_to_str
+from gui.utils import get_collector_values, save_new_collector, check_description_len
 
 
 class DataTableWidget:
@@ -306,16 +306,20 @@ class UpdateWidget:
                                         message=f"Do you want to update expense Id={expense_id} ?")
         _, year, month, day, *_ = self.client_database.get_expense_info(expense_id)
         if answer == "yes":
+            # Raise pop window
             self.update_window = customtkinter.CTkToplevel()
             self.update_window.resizable("False", "False")
             self.update_window.title(f"Update Id {expense_id}")
-            self.update_window.attributes('-topmost', 'true')
+            self.update_window.attributes('-topmost', 'true')    # Place above the root frame.
+            # Create the object that will contain the data entry widget.
             pop_window = PopWindow(self.update_window, self.database_obj.username, self.database_obj.client_database)
             data_entry = DataEntryWidget(pop_window)
+            # Change the button behaviour from add --> update.
             data_entry.add_btn.configure(text="Update", command=lambda: data_entry.update_entry(self, expense_id,
                                                                                                 year, month, day))
 
     def reload_app(self):
+        """Close pop up window and reload the app widget affected by the update."""
         self.update_window.destroy()
         time.sleep(0.5)
         self.update_entry.delete(0, customtkinter.END)
@@ -324,6 +328,13 @@ class UpdateWidget:
 
 
 class PopWindow:
+    """
+    PopWindow objects posses the attributes needed to act as a frame for the
+    data entry widget.
+    :param container: frame to place the data entry widget
+    :param username: user
+    :param database: client database
+    """
     def __init__(self, container, username, database):
         self.container = container
         self.username = username
