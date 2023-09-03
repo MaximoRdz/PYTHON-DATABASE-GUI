@@ -1,7 +1,7 @@
 import customtkinter
 
-from utils import FontParams
-from widget_utils import DataTableWidget, DataEntryWidget, UpdateWidget, DeleteWidget
+from gui.utils import FontParams
+from gui.widget_utils import DataTableWidget, DataEntryWidget, UpdateWidget, DeleteWidget
 from database.database import Database
 
 
@@ -121,21 +121,3 @@ class DataBaseGui:
     def destroy_data_delete(self):
         """Destroy the delete-widget"""
         self.data_delete.destroy()
-
-
-class App(customtkinter.CTk):
-    """Database gui launcher."""
-    def __init__(self):
-        super().__init__()
-        customtkinter.set_appearance_mode("light")
-        self.title("Expenses Data Base")
-        self.geometry("300x220")
-        self.resizable("False", "False")
-        # Initialize the user entry interface
-        user = UsernameGui(self)
-
-
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
-
