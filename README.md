@@ -20,6 +20,7 @@ features so entries can be easily modify.
 - ✅ Compartmentalize everything in classes to allow cross functionality among frames.
 - ✅ Self executing file for windows.
 - ✅ Automatically fill the old expense info when updating it (PopWindow).
+- ✅ Increase the collector list if it is one not previously used.
 - ✅ README app instructions.
 - ⬜ Pretiffy text entries.
 - ⬜ Check if the selected expense index is real. If not raise error window.
