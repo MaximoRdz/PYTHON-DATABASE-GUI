@@ -33,7 +33,7 @@ def get_collector_values():
     If the collector file is not found then
     :return List with one element -> empty string
     """
-    file_path = os.path.join("..", "collector.txt")
+    file_path = os.path.join(".", "collector.txt")
     try:
         collector_values = list()
         with open(file_path, "r") as file:
@@ -48,7 +48,7 @@ def get_collector_values():
 
 def save_new_collector(new_collector):
     """If the new collector is not in the saved list add it"""
-    file_path = os.path.join("..", "collector.txt")
+    file_path = os.path.join(".", "collector.txt")
     collector_list = get_collector_values()
     if len(collector_list) <= ct.MAXIMUM_COLLECTOR_VALUES and new_collector not in collector_list:
         with open(file_path, "a") as file:
