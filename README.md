@@ -4,6 +4,11 @@ that enables the user to keep track of its expenses saving the information
 in a well structure database. The app includes the "delete" and "update"
 features so entries can be easily modify.
 
+## Tutorial
+### Add
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
+
+### Delete and Update
 ### Packages 
 * `database`: Module required to create and manage the database.
 * `gui`: Necessary modules to define the user interface.
