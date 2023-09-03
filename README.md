@@ -7,8 +7,7 @@ features so entries can be easily modify.
 ### Packages 
 * `database`: Module required to create and manage the database.
 * `gui`: Necessary modules to define the user interface.
-  * `app`: Main body of the application.
-  * `widget_utils`: Floating widgets (data entry, data display, data update and data delete).
+
 ### Technologies used
 ![Tkinter](https://img.shields.io/badge/Tkinter-4B8BBE?style=for-the-badge&logo=tkinter&logoColor=white)
 ![CustomTkinter](https://img.shields.io/badge/CustomTkinter-4B8BBE?style=for-the-badge&logo=tkinter&logoColor=white)

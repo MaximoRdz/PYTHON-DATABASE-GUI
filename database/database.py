@@ -8,7 +8,7 @@ class Database:
     """Create or init the user expenses database. This class provides all the
     necessary methods to automate the control of the database through the gui."""
     def __init__(self, username):
-        self.user_db = os.path.join("..", username+".db")    # .. : save on this folder parent
+        self.user_db = os.path.join(".", username+".db")    # . save on this folder
 
     def create_database(self):
         """Create the relational database to save the expenses."""
