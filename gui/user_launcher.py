@@ -1,7 +1,7 @@
 import customtkinter
 
 from gui.utils import FontParams
-from gui.widget_utils import DataTableWidget, DataEntryWidget, UpdateWidget, DeleteWidget
+from gui.widget_classes import DataTableWidget, DataEntryWidget, UpdateWidget, DeleteWidget
 from database.database import Database
 
 
