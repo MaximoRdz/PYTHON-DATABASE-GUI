@@ -1,2 +1,5 @@
 Example
 Ikea
+Gym
+Lidl
+Bank
