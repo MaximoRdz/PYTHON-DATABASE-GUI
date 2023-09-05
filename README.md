@@ -25,8 +25,8 @@ Entry delete via `id`.
 <img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/delete.gif">
 
 ### Packages 
-* `database`: Module required to create and manage the database.
-* `gui`: Necessary modules to define the user interface.
+* `database`: Module required to create and manage the database. (![here](https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/tree/main/database))
+* `gui`: Necessary modules to define the user interface. (![here](https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/tree/main/gui))
 
 ## Technologies used
 ![Tkinter](https://img.shields.io/badge/Tkinter-4B8BBE?style=for-the-badge&logo=tkinter&logoColor=white)
