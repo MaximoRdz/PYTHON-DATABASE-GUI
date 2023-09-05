@@ -5,22 +5,27 @@ in a well structure database. The app includes the "delete" and "update"
 features so entries can be easily modify.
 
 ## Tutorial
+The app track 4 attributes per expense: `Amount | Collector | Payment Method | Payment Type | Description`.
 ### Add
+Here it is a simple example of how to add an entry to the database. Take into account that every attribute is sensitive
+to the type of variable is introduced (`Amount` [float], `Collector | Description` [str]) if there is a mismatch the app 
+will raise an error window so the values can be corrected.
+
 <img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
-<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
+
 
 ### Delete and Update
 ### Packages 
 * `database`: Module required to create and manage the database.
 * `gui`: Necessary modules to define the user interface.
 
-### Technologies used
+## Technologies used
 ![Tkinter](https://img.shields.io/badge/Tkinter-4B8BBE?style=for-the-badge&logo=tkinter&logoColor=white)
 ![CustomTkinter](https://img.shields.io/badge/CustomTkinter-4B8BBE?style=for-the-badge&logo=tkinter&logoColor=white)
 
 ![SQLite3](https://img.shields.io/badge/SQLite3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
-#### TODO
+## TODO
 - ✅ Create database for new clients if username is not register.
 - ✅ Compartmentalize everything in classes to allow cross functionality among frames.
 - ✅ Self executing file for windows.
