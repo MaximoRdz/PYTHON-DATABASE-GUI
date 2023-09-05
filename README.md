@@ -7,6 +7,7 @@ features so entries can be easily modify.
 ## Tutorial
 ### Add
 <img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
 
 ### Delete and Update
 ### Packages 
