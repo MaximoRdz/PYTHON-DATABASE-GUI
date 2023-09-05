@@ -11,10 +11,19 @@ Here it is a simple example of how to add an entry to the database. Take into ac
 to the type of variable is introduced (`Amount` [float], `Collector | Description` [str]) if there is a mismatch the app 
 will raise an error window so the values can be corrected.
 
-<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_expense.gif">
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/add_example.gif">
 
 
-### Delete and Update
+### Update
+Entry update via `id`. Unique `id` and `date` remain untouched.
+
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/update_example.gif">
+
+### Delete
+Entry delete via `id`.
+
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/delete.gif">
+
 ### Packages 
 * `database`: Module required to create and manage the database.
 * `gui`: Necessary modules to define the user interface.
