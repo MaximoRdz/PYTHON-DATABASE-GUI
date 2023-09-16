@@ -44,3 +44,4 @@ Entry delete via `id`.
 - ⬜ Pretiffy text entries.
 - ⬜ Check if the selected expense index is real. If not raise error window.
 - ⬜ Previous and Next buttons bellow the expenses' display table.
+- ⬜ Create test cases `pytest`. 
