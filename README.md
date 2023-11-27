@@ -17,12 +17,12 @@ will raise an error window so the values can be corrected.
 ### Update
 Entry update via `id`. Unique `id` and `date` remain untouched.
 
-<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/update_example.gif">
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/update_example.gif" loading="lazy">
 
 ### Delete
 Entry delete via `id`.
 
-<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/delete.gif">
+<img width="500" alt="add" src="https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/blob/main/images/delete.gif" loading="lazy">
 
 ### Packages 
 * `database`: Module required to create and manage the database. ([here](https://github.com/MaximoRdz/PYTHON-DATABASE-GUI/tree/main/database))
